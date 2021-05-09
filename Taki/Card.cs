@@ -9,9 +9,9 @@ namespace Taki
     class Card
     {
         private int cardNum;
-        private string cardColor;
+        private char cardColor;
 
-        public Card(int cardNum, string cardColor)
+        public Card(int cardNum, char cardColor)
         {
             this.cardNum = cardNum;
             this.cardColor = cardColor;
@@ -22,7 +22,7 @@ namespace Taki
             return this.cardNum;
         }
 
-        public string GetCardColor()
+        public char GetCardColor()
         {
             return this.cardColor;
         }
