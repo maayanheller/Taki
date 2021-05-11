@@ -26,5 +26,28 @@ namespace Taki
         {
             return this.cardColor;
         }
+
+        public void PrintCard()
+        {
+            switch(this.cardColor)
+            {   
+                case 'R':
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case 'Y':
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                case 'G':
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case 'B':
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+            }
+
+            Console.Write("{0}", this.cardNum);
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(" ");
+        }
     }
 }
