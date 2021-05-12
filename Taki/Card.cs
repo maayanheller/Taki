@@ -13,23 +13,28 @@ namespace Taki
 
         public Card(int cardNum, char cardColor)
         {
+            // Init a Card
             this.cardNum = cardNum;
             this.cardColor = cardColor;
         }
 
         public int GetCardNum()
         {
+            // Return the card's number
             return this.cardNum;
         }
 
         public char GetCardColor()
         {
+            // Return the card's color
             return this.cardColor;
         }
 
         public void PrintCard()
         {
-            switch(this.cardColor)
+            // Print the card, based on his color attribute, change the console printing color, print, then change back to regular console color
+            ConsoleColor currentForeground = Console.ForegroundColor;
+            switch (this.cardColor)
             {   
                 case 'R':
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -46,7 +51,7 @@ namespace Taki
             }
 
             Console.Write("{0}", this.cardNum);
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = currentForeground;
             Console.Write(" ");
         }
     }
