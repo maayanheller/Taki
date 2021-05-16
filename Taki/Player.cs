@@ -66,6 +66,7 @@ namespace Taki
         {
             // Use the PrintCard function on each element until value is null (or none is)
             // If element's value is null, break the loop
+            Console.WriteLine("{0} cards: ", this.playerName);
             for (int i = 0; i < this.cardsInPossesion.Length; i++)
             {
                 if (this.cardsInPossesion[i] != null)

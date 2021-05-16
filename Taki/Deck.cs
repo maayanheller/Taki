@@ -11,6 +11,7 @@ namespace Taki
         private Card[] deck;
         private static char[] colors = new char[4] { 'R', 'Y', 'G', 'B' };
         private int decksNum = 0;
+        private int deckLength;
 
         public Deck(int decksNum)
         {
@@ -23,10 +24,27 @@ namespace Taki
             {
                 for (int i = 0; i < this.deck.Length; i++)
                 {
-                    this.deck[i] = new Card((i % 10) + 1, colors[i / 10]);
+                    this.deck[i] = new Card((i % 10) + 1, colors[(i / 10) % 4]);
                 }
                 this.decksNum--;
             }
+
+            this.deckLength = this.deck.Length;
+        }
+
+        public Deck()
+        {
+
+        }
+
+        public Card[] GetDeck()
+        {
+            return this.deck;
+        }
+
+        public int GetDeckLength()
+        {
+            return this.deckLength;
         }
 
         public void AddCard(int cardNum, char color)
@@ -59,6 +77,7 @@ namespace Taki
                             this.deck[j] = this.deck[j + 1];
                         }
                         this.deck[this.deck.Length - 1] = null;
+                        this.deckLength--;
                         break;
                     }
                 }
@@ -96,9 +115,24 @@ namespace Taki
             return empty;
         }
 
+        public void ShuffleDeck()
+        {
+            Random rnd = new Random();
+
+            for(int i = 0; i < deck.Length; i++)
+            {
+                int rndIndex = rnd.Next(0, deck.Length - 1);
+                Card temp = deck[i];
+                deck[i] = deck[rndIndex];
+                deck[rndIndex] = temp;
+
+            }
+        }
+
         public void PrintDeck()
         {
             // Print all cards on deck
+            Console.WriteLine("Current cards in deck: ");
             for (int i = 0; i < this.deck.Length; i++)
             {
                 if (this.deck[i] != null)

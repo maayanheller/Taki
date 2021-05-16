@@ -10,6 +10,23 @@ namespace Taki
     {
         static void Main(string[] args)
         {
+            Deck deck;
+            Player[] players;
+            Game game1 = new Game();
+
+
+            deck = game1.NewGame();
+
+            deck.PrintDeck();
+
+            players = game1.GetPlayers();
+
+            for(int i = 0; i < players.Length; i++)
+            {
+                players[i].PrintPlayerCards();
+            }
+
+
         }
     }
 }
