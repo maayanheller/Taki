@@ -30,10 +30,10 @@ namespace Taki
                 gameDeck.ShuffleDeck();
                 for(int i = 0; i < players.Length; i++)
                 {
-                    players[i] = new Player(new Card[numOfDecks * 40 - playersNum * 8], "p" + (i + 1).ToString());
+                    players[i] = new Player(new Card[numOfDecks * 40 - playersNum * 8 + 8], "p" + (i + 1).ToString());
                     for(int j = 0; j < 8; j++)
                     {
-                        gameDeck.RemoveCard(gameDeck.GetDeck()[i].GetCardNum(), gameDeck.GetDeck()[i].GetCardColor(), players[i]);
+                        gameDeck.GiveCardToPlayer(gameDeck.GetDeck()[i], players[i]);
                     }
                 }
 

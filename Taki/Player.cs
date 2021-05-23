@@ -10,12 +10,24 @@ namespace Taki
     {
         private Card[] cardsInPossesion;
         private string playerName;
+        private int cardsInPossesionLength;
 
         public Player(Card[] cards, string name)
         {
             // Init a Player
             this.cardsInPossesion = cards;
             this.playerName = name;
+            this.cardsInPossesionLength = 0;
+        }
+
+        public int GetAmountOfCards()
+        {
+            return this.cardsInPossesionLength;
+        }
+
+        public string GetPlayerName()
+        {
+            return this.playerName;
         }
 
         public void AddCardToPlayersPossesion(Card newCard)
@@ -32,34 +44,44 @@ namespace Taki
                 else
                 {
                     this.cardsInPossesion[i] = newCard;
+                    this.cardsInPossesionLength++;
                     break;
                 }
             }
         }
 
-        public void RemoveCardFromPossesion(Card cardToRemove)
+        public Card SearchForCardToPutInTheStack(Card cardToSearch)
         {
             // Try to scan cardsInPossesion for the specified card to remove,
             // If not found then take a card from the deck and add it to the player's possesion.
-            for(int i = 0; i < this.cardsInPossesion.Length; i++)
+            
+            for(int i = 0; i < this.cardsInPossesionLength; i++)
             {
-                try
+                if (this.cardsInPossesion[i] != null)
                 {
-                    if (this.cardsInPossesion[i].GetCardColor() == cardToRemove.GetCardColor() && this.cardsInPossesion[i].GetCardNum() == cardToRemove.GetCardNum())
+                    if (this.cardsInPossesion[i].GetCardColor() == cardToSearch.GetCardColor() || this.cardsInPossesion[i].GetCardNum() == cardToSearch.GetCardNum())
                     {
+                        Card removedCard = this.cardsInPossesion[i];
                         for (int j = i; j < this.cardsInPossesion.Length - 1; j++)
                         {
-                            this.cardsInPossesion[j] = this.cardsInPossesion[j + 1];
+                            if (this.cardsInPossesion[j] != null)
+                            {
+                                this.cardsInPossesion[j] = this.cardsInPossesion[j + 1];
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        
                         }
-                        this.cardsInPossesion[this.cardsInPossesion.Length - 1] = null;
-                        break;
+
+                        this.cardsInPossesionLength--;
+                        return removedCard;
                     }
                 }
-                catch
-                {
-                    AddCardToPlayersPossesion(cardToRemove);
-                }
-            }     
+            }
+
+            return null;
         }
         
         public void PrintPlayerCards()
@@ -67,7 +89,7 @@ namespace Taki
             // Use the PrintCard function on each element until value is null (or none is)
             // If element's value is null, break the loop
             Console.WriteLine("{0} cards: ", this.playerName);
-            for (int i = 0; i < this.cardsInPossesion.Length; i++)
+            for (int i = 0; i < this.cardsInPossesionLength; i++)
             {
                 if (this.cardsInPossesion[i] != null)
                 {

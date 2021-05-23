@@ -61,37 +61,38 @@ namespace Taki
             }
         }
 
-        public void RemoveCard(int num, char color, Player player)
+        public void GiveCardToPlayer(Card card, Player player)
         {
-            // Try to scan the deck for the card with the specified properties, if found, add to specified player's possesion and remove from this deck
+            // Try to scan the deck for the card with same num, if found, add to specified player's possesion and remove from this deck
             // If isn't found, return a message.
             for (int i = 0; i < this.deck.Length; i++)
             {
-                try
+                if(card != null)
                 {
-                    if (this.deck[i].GetCardColor() == color && this.deck[i].GetCardNum() == num)
+                    try
                     {
-                        player.AddCardToPlayersPossesion(this.deck[i]);
-                        for (int j = i; j < this.deck.Length - 1; j++)
+                        if (this.deck[i].GetCardNum() == card.GetCardNum() && this.deck[i].GetCardColor() == card.GetCardColor())
                         {
-                            this.deck[j] = this.deck[j + 1];
+                            player.AddCardToPlayersPossesion(this.deck[i]);
+                            for (int j = i; j < this.deck.Length - 1; j++)
+                            {
+                                this.deck[j] = this.deck[j + 1];
+                            }
+                            this.deck[this.deck.Length - 1] = null;
+                            this.deckLength--;
+                            break;
                         }
-                        this.deck[this.deck.Length - 1] = null;
-                        this.deckLength--;
-                        break;
+                    }
+
+                    catch
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write(" \n The card ");
+                        card.PrintCard();
+                        Console.Write("isn't in the deck \n");
+                        Console.ForegroundColor = ConsoleColor.Gray;
                     }
                 }
-
-                catch
-                {
-                    Card toShow = new Card(num, color);
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.Write(" \n The card ");
-                    toShow.PrintCard();
-                    Console.Write("isn't in the deck \n");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                }
-                
             }
         }
 
