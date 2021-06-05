@@ -32,11 +32,6 @@ namespace Taki
             this.deckLength = this.deck.Length;
         }
 
-        public Deck()
-        {
-
-        }
-
         public Card[] GetDeck()
         {
             return this.deck;
@@ -96,6 +91,17 @@ namespace Taki
             }
         }
 
+        public Card TakeTopCard()
+        {
+            Card card = this.deck[0];
+            
+            for (int j = 0; j < this.deck.Length - 1; j++)
+            {
+                this.deck[j] = this.deck[j + 1];
+            }
+            this.deckLength--;
+            return card;
+        }
         public bool IsEmpty()
         {
             // Check if deck contains cards

@@ -11,6 +11,7 @@ namespace Taki
         private Card[] cardsInPossesion;
         private string playerName;
         private int cardsInPossesionLength;
+        private Card lastCardUsed;
 
         public Player(Card[] cards, string name)
         {
@@ -28,6 +29,16 @@ namespace Taki
         public string GetPlayerName()
         {
             return this.playerName;
+        }
+
+        public Card GetLastCardUsed()
+        {
+            return this.lastCardUsed;
+        }
+
+        public void SetLastCardUsed(Card newCard)
+        {
+            this.lastCardUsed = newCard;
         }
 
         public void AddCardToPlayersPossesion(Card newCard)

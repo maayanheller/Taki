@@ -50,9 +50,8 @@ namespace Taki
                     break;
             }
 
-            Console.Write("{0}", this.cardNum);
+            Console.Write("{0} ", this.cardNum);
             Console.ForegroundColor = currentForeground;
-            Console.Write(" ");
         }
     }
 }

@@ -12,19 +12,23 @@ namespace Taki
         public Deck NewGame()
         {
             Deck gameDeck;
+            int num = 0;
             Console.WriteLine("How many players does the game have?");
-            int playersNum = int.Parse(Console.ReadLine());
-            players = new Player[playersNum];
-
-            if(playersNum <= 1)
+            string playersNumString = Console.ReadLine();
+            int playersNum = 0;
+            bool isPlayersNumInt = int.TryParse(playersNumString, out num);
+            if(isPlayersNumInt == false || int.Parse(playersNumString) <= 1)
             {
-                Console.WriteLine("Ok, Come and play later");
+                
+                Console.WriteLine("Sorry, Input is invalid, Come and play later");
                 System.Environment.Exit(-1);
                 return null;
             }
 
             else
             {
+                playersNum = int.Parse(playersNumString);
+                players = new Player[playersNum];
                 int numOfDecks = playersNum / 4 + Math.Min(playersNum % 4, 1);
                 gameDeck = new Deck(numOfDecks);
                 gameDeck.ShuffleDeck();
