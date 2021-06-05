@@ -34,11 +34,13 @@ namespace Taki
 
         public Card[] GetDeck()
         {
+            // Return deck
             return this.deck;
         }
 
         public int GetDeckLength()
         {
+            // return deck's length
             return this.deckLength;
         }
 
@@ -93,6 +95,7 @@ namespace Taki
 
         public Card TakeTopCard()
         {
+            // Take the first (top) card of the array, remove it and return it
             Card card = this.deck[0];
             
             for (int j = 0; j < this.deck.Length - 1; j++)
@@ -124,6 +127,7 @@ namespace Taki
 
         public void ShuffleDeck()
         {
+            // Shuffle the deck by replacing indexes of cards
             Random rnd = new Random();
 
             for(int i = 0; i < deck.Length; i++)

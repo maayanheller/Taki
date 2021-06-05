@@ -11,6 +11,10 @@ namespace Taki
         private Player[] players;
         public Deck NewGame()
         {
+            // Init game by doing the following actions:
+            // 1. Get player's number, and check if valid
+            // 2. If valid, init deck with the correct number of cards
+            // 3. Shuffle the deck, and give the cards to the players
             Deck gameDeck;
             int num = 0;
             Console.WriteLine("How many players does the game have?");
@@ -47,6 +51,7 @@ namespace Taki
 
         public Player[] GetPlayers()
         {
+            // Return the players array
             return players;
         }
     }

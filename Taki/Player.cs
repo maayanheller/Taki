@@ -23,21 +23,25 @@ namespace Taki
 
         public int GetAmountOfCards()
         {
+            // Return the amount of the cards the player have
             return this.cardsInPossesionLength;
         }
 
         public string GetPlayerName()
         {
+            // Return the player's name
             return this.playerName;
         }
 
         public Card GetLastCardUsed()
         {
+            // Reutrn the last card used by the player
             return this.lastCardUsed;
         }
 
         public void SetLastCardUsed(Card newCard)
         {
+            // Set the last used card
             this.lastCardUsed = newCard;
         }
 
