@@ -12,11 +12,14 @@ namespace Taki
         public Deck NewGame()
         {
             // Init game by doing the following actions:
-            // 1. Get player's number, and check if valid
-            // 2. If valid, init deck with the correct number of cards
-            // 3. Shuffle the deck, and give the cards to the players
+            // 1. Get player's number, and check if valid.
+            // 2. If valid, init deck with the correct number of cards.
+            // 3. Shuffle the deck.
+            // 4. Deal the cards to the players.
             Deck gameDeck;
             int num = 0;
+            Console.WriteLine("Welcome to \"Taki\" game. ");
+            Console.WriteLine("The game uses your specified players number, and makes a simulation of a \"Taki\" Game with this players number");
             Console.WriteLine("How many players does the game have?");
             string playersNumString = Console.ReadLine();
             int playersNum = 0;
