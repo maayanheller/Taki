@@ -3,7 +3,7 @@ A simulation of the card game "Taki", with the number cards only.
 The project is considered as the final of the tenth grade in the artificial intelligence.
 The project is limited with learning materials such as dictionaries, external libraries for graphics, etc.
 
-#Algorithm
+##Algorithm
 ```
     INPUT num of players playing;
     IF (typeof input != int) {
